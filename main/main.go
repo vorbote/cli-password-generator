@@ -41,10 +41,14 @@ func main() {
 
 	defer func() {
 		err := recover()
-		fmt.Println("Error!", err)
+
+		// Handle panic
+		if err != nil {
+			fmt.Println("Error!", err)
+		}
 	}()
 
 	password := util.GeneratePassword(length, useDigit, useLower, useUpper, specialChars)
 
-	fmt.Printf("您的密码是：\n%v", password)
+	fmt.Printf("%v\n", password)
 }
